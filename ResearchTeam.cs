@@ -8,6 +8,6 @@ namespace GitProject
 {
     internal class ResearchTeam
     {
-
+       
     }
 }
