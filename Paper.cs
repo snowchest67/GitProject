@@ -8,15 +8,21 @@ namespace GitProject
 {
     internal class Paper
     {
-        public string titleOfPaper { get; set; }//открытое свойство типа стринг для названия публикации
-        public Person author { get; set; }//открытое свойство типа Person для автора
-        public DateTime dateOfPaper { get; set; }//открытое свойство типа DateTime для даты публикации
+        public string TitleOfPaper { get; set; }//открытое свойство типа стринг для названия публикации
+        public Person Author { get; set; }//открытое свойство типа Person для автора
+        public DateTime DateOfPaper { get; set; }//открытое свойство типа DateTime для даты публикации
 
         public Paper(string titleOfPaper, Person author, DateTime dateOfPaper)//конструктор для инициализации всех свойств класса
         {
-            this.titleOfPaper = titleOfPaper;
-            this.author = author;
-            this.dateOfPaper = dateOfPaper;
+            this.TitleOfPaper = titleOfPaper;
+            this.Author = author;
+            this.DateOfPaper = dateOfPaper;
+        }
+        public Paper ()//конструктор без параметров, для инициализации некоторыми значениями по умолчанию
+        {
+            this.TitleOfPaper = "Название неизвестно.";
+            this.Author = new Person();
+            this.DateOfPaper = DateTime.Now;
         }
     }
 }
