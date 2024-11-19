@@ -24,6 +24,28 @@ namespace GitProject
             this.Author = new Person();
             this.DateOfPaper = DateTime.Now;
         }
+        public static Paper[] fillMasPap(int n)
+        {
+            Paper[] masPaper = new Paper[n];
+            for (int i = 0; i < masPaper.Length; i++)
+            {
+                masPaper[i] = new Paper();
+            }
+            for (int i = 0; i < masPaper.Length; i++)
+            {
+                Console.Write("Введите названия публикации: ");
+                masPaper[i].TitleOfPaper = Console.ReadLine();
+                Console.Write("Введите имя автора: ");
+                masPaper[i].Author.FirstName = Console.ReadLine();
+                Console.Write("Введите фамилию автора: ");
+                masPaper[i].Author.LastName = Console.ReadLine();
+                Console.Write("Введите дату рождения автора: ");
+                masPaper[i].Author.Birthday = Convert.ToDateTime(Console.ReadLine());
+                Console.Write("Введите дату публикацию: ");
+                masPaper[i].DateOfPaper = Convert.ToDateTime(Console.ReadLine());
+            }
+            return masPaper;
+        }
         public override string ToString()//метод ToString()
         {
             return $"Название публикации: {TitleOfPaper}\nАвтор: {Author.ToShortString()}\nДата публикации: {DateOfPaper}";
