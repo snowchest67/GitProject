@@ -99,6 +99,7 @@ namespace GitProject
         private string CreateStr()
         {
             string str = "";
+            if (papers == null) return "Публкации отсутствуют.";
             for (int i = 0; i < this.papers.Length; i++)
             {
                 str += this.papers[i].ToString() + '\n';
