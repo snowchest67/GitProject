@@ -53,6 +53,20 @@ try
     endTime = DateTime.Now;
     duration = endTime - startTime;
     Console.WriteLine("Время выполнения для одномерного массива: " + duration.TotalMilliseconds + " мс");
+
+    // Двумерный массив
+    Paper[,] masDvum = new Paper[n, n];
+    startTime = DateTime.Now;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            masDvum[i, j] = new Paper();
+        }
+    }
+    endTime = DateTime.Now;
+    duration = endTime - startTime;
+    Console.WriteLine("Время выполнения для двумерного прямоугольного массива: " + duration.TotalMilliseconds + " мс");
 }
 catch (ArgumentNullException ex)
 {
