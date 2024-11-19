@@ -16,7 +16,7 @@ namespace GitProject
         private string nameOrganizationr;
         private int id;
         private TimeFrame duration;
-        private Paper[] papers;
+        private Paper[]? papers;
 
         public ResearchTeam(string researchTopics, string nameOrganizationr, int id, TimeFrame duration)
         {
