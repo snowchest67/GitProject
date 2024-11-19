@@ -18,17 +18,12 @@ namespace GitProject
         private TimeFrame duration;
         private Paper[] papers;
 
-        public ResearchTeam(string researchTopics, string nameOrganizationr, int id, TimeFrame duration, int n)
+        public ResearchTeam(string researchTopics, string nameOrganizationr, int id, TimeFrame duration)
         {
             this.researchTopics = researchTopics;
             this.nameOrganizationr = nameOrganizationr;
             this.id = id;
             this.duration = duration;
-            papers = new Paper[n];
-            for (int i = 0;i < n; i++)
-            {
-                papers[i] = new Paper();
-            }
         }
 
         public ResearchTeam()
@@ -85,7 +80,7 @@ namespace GitProject
             {
                 int index = 0;
                 DateTime max = papers[0].DateOfPaper;
-                if (LatePaper == null) throw new Exception("Ссылка равна null");
+                if (papers == null) throw new Exception("Ссылка равна null");
                 else
                 {
                     for(int i = 0; i < papers.Length; i++)
@@ -101,15 +96,41 @@ namespace GitProject
             }
         }
 
-        public override string ToString()
+        private string CreateStr()
         {
             string str = "";
-            str += $"Названием темы исследования: {researchTopics}\nНазванием организации: {nameOrganizationr}\nРегистрационный номер: {id}\nПродолжительность исследования: {duration}\nCписок публикаций:\n";
-            for (int i = 0;i < this.papers.Length;i++)
+            for (int i = 0; i < this.papers.Length; i++)
             {
-                str += this.papers[i].ToString();
-            }    
+                str += this.papers[i].ToString() + '\n';
+            }
             return str;
+        }
+
+        public void AddPapers(params Paper[] mas)
+        {
+            if (papers == null)
+            {
+                papers = new Paper[mas.Length];
+                for(int i = 0;i < papers.Length;i++)
+                {
+                    papers[i] = mas[i];
+                }
+            }
+            else
+            {
+                int j = papers.Length;
+                Array.Resize(ref papers, papers.Length + mas.Length);
+                for(int i = 0; j < papers.Length; i++, j++)
+                {
+                    papers[j] = mas[i];
+                }
+                
+            }
+        }
+
+        public override string ToString()
+        {
+            return $"Названием темы исследования: {researchTopics}\nНазванием организации: {nameOrganizationr}\nРегистрационный номер: {id}\nПродолжительность исследования: {duration}\nCписок публикаций:\n" + CreateStr();
         }
 
         public virtual string ToShortString()
