@@ -80,7 +80,7 @@ namespace GitProject
             {
                 int index = 0;
                 DateTime max = papers[0].DateOfPaper;
-                if (papers == null) throw new Exception("Ссылка равна null");
+                if (papers == null) throw new ArgumentNullException("Ссылка равна null");
                 else
                 {
                     for(int i = 0; i < papers.Length; i++)
