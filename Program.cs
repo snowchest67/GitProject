@@ -36,6 +36,23 @@ try
     Console.WriteLine(r1);
 
     Console.WriteLine("Публикация с самой поздней датой выхода:\n" + r1.LatePaper);
+
+    Console.WriteLine("Введите размер массивов: ");
+    int n1 = Convert.ToInt32(Console.ReadLine());
+
+    DateTime startTime, endTime;
+    TimeSpan duration;
+
+    //Одномерный массив
+    Paper[] mas = new Paper[n1];
+    startTime = DateTime.Now;
+    for (int i = 0; i < mas.Length; i++)
+    {
+        mas[i] = new Paper();
+    }
+    endTime = DateTime.Now;
+    duration = endTime - startTime;
+    Console.WriteLine("Время выполнения для одномерного массива: " + duration.TotalMilliseconds + " мс");
 }
 catch (ArgumentNullException ex)
 {
