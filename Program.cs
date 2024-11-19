@@ -23,6 +23,11 @@ try
     Console.WriteLine("Добавили список публикаций: " + string.Join(", ", r1.Papers.Select(p => p.TitleOfPaper)));
     Console.WriteLine("ОБЩАЯ ИНФОРМАЦИЯ:");
     Console.WriteLine(r1);
+    Paper p1 = new Paper("Сватко о пандосах!", new Person("Тимофей", "Логвин", new DateTime(2006, 04, 03)), new DateTime(2024, 11, 20));
+    Paper p2 = new Paper("Как выжить на IT", new Person("Злата", "Гросул", new DateTime(2006, 11, 24)), new DateTime(2024, 11, 15));
+    Paper p3 = new Paper("Куда идти на практику?", new Person("Анна", "Архипцева", new DateTime(2007, 02, 17)), new DateTime(2024, 11, 18));
+    r1.AddPapers(p1, p2, p3);
+    Console.WriteLine(r1);
 }
 catch (ArgumentNullException ex)
 {

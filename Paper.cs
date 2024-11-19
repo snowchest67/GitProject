@@ -51,7 +51,7 @@ namespace GitProject
 
         public override string ToString() // метод ToString()
         {
-            return $"Название публикации: {TitleOfPaper}\nАвтор: {Author.ToShortString()}\nДата публикации: {DateOfPaper}";
+            return $"\nНазвание публикации: {TitleOfPaper}\nАвтор: {Author.ToShortString()}\nДата публикации: {DateOfPaper}";
         }
     }
 }

@@ -74,8 +74,8 @@ namespace GitProject
             Birthday = birthday;
         }
 
-        public override string ToString() => $"Имя: {firstName}; Фамилия: {LastName}; год рождения: {birthday.ToShortDateString()}";
+        public override string ToString() => $"\nИмя: {firstName}; Фамилия: {LastName}; год рождения: {birthday.ToShortDateString()}";
 
-        public virtual string ToShortString() => $"Имя: {firstName}; Фамилия: {LastName}";
+        public virtual string ToShortString() => $"\nИмя: {firstName}; Фамилия: {LastName}";
     }
 }
