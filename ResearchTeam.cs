@@ -71,7 +71,7 @@ namespace GitProject
         public Paper[] Papers
         {
             get { return papers; }
-            set { Papers = value; }
+            set { papers = value; }
         }
 
         public Paper LatePaper
