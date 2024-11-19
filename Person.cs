@@ -8,8 +8,8 @@ namespace GitProject
 {
     internal class Person
     {
-        String firstName;
-        String lastName;
+        String? firstName;
+        String? lastName;
         DateTime birthday;
 
         public DateTime Birthday
@@ -23,7 +23,7 @@ namespace GitProject
                     throw new ArgumentException("День рождения не может быть больше сегодняшнего дня");
             }
         }
-        public String FirstName
+        public String? FirstName
         {
             get => firstName;
             set
@@ -34,7 +34,7 @@ namespace GitProject
                 firstName = value;
             }
         }
-        public String LastName
+        public String? LastName
         {
             get => lastName;
             set
