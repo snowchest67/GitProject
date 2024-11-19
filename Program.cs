@@ -66,7 +66,25 @@ try
     }
     endTime = DateTime.Now;
     duration = endTime - startTime;
-    Console.WriteLine("Время выполнения для двумерного прямоугольного массива: " + duration.TotalMilliseconds + " мс");
+    Console.WriteLine("Время выполнения для двумерного массива: " + duration.TotalMilliseconds + " мс");
+
+    // Двумерный ступенчатый массив
+    Paper[][] masDvumStep = new Paper[n][];
+    for (int i = 0; i < n; i++)
+    {
+        masDvumStep[i] = new Paper[n];
+    }
+    startTime = DateTime.Now;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            masDvumStep[i][j] = new Paper();
+        }
+    }
+    endTime = DateTime.Now;
+    duration = endTime - startTime;
+    Console.WriteLine("Время выполнения для двумерного ступенчатого массива: " + duration.TotalMilliseconds + " мс");
 }
 catch (ArgumentNullException ex)
 {
