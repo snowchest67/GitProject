@@ -44,24 +44,35 @@ try
     TimeSpan duration;
 
     //Одномерный массив
-    Paper[] mas = new Paper[n1];
-    startTime = DateTime.Now;
+    Paper[] mas = new Paper[n1*n1];
     for (int i = 0; i < mas.Length; i++)
     {
         mas[i] = new Paper();
+    }
+    startTime = DateTime.Now;
+    for (int i = 0; i < mas.Length; i++)
+    {
+        mas[i].Author.FirstName = "gkjgk";
     }
     endTime = DateTime.Now;
     duration = endTime - startTime;
     Console.WriteLine("Время выполнения для одномерного массива: " + duration.TotalMilliseconds + " мс");
 
     // Двумерный массив
-    Paper[,] masDvum = new Paper[n, n];
-    startTime = DateTime.Now;
-    for (int i = 0; i < n; i++)
+    Paper[,] masDvum = new Paper[n1, n1];
+    for (int i = 0; i < n1; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < n1; j++)
         {
             masDvum[i, j] = new Paper();
+        }
+    }
+    startTime = DateTime.Now;
+    for (int i = 0; i < n1; i++)
+    {
+        for (int j = 0; j < n1; j++)
+        {
+            masDvum[i, j].Author.FirstName = "gkjgk";
         }
     }
     endTime = DateTime.Now;
@@ -69,17 +80,21 @@ try
     Console.WriteLine("Время выполнения для двумерного массива: " + duration.TotalMilliseconds + " мс");
 
     // Двумерный ступенчатый массив
-    Paper[][] masDvumStep = new Paper[n][];
-    for (int i = 0; i < n; i++)
+    Paper[][] masDvumStep = new Paper[n1][];
+    for (int i = 0; i < n1; i++)
     {
-        masDvumStep[i] = new Paper[n];
-    }
-    startTime = DateTime.Now;
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
+        masDvumStep[i] = new Paper[n1];
+        for (int j = 0; j < n1; j++)
         {
             masDvumStep[i][j] = new Paper();
+        }
+    }
+    startTime = DateTime.Now;
+    for (int i = 0; i < n1; i++)
+    {
+        for (int j = 0; j < n1; j++)
+        {
+            masDvumStep[i][j].Author.FirstName = "gkjgk";
         }
     }
     endTime = DateTime.Now;
@@ -88,5 +103,13 @@ try
 }
 catch (ArgumentNullException ex)
 {
-    Console.WriteLine("Ошибка! " + ex.Message);
+    Console.WriteLine("Ошибка нулевой ссылки! " + ex.Message);
+}
+catch(ArgumentException ex)
+{
+    Console.WriteLine("Ошибка аргумента! " + ex.Message);
+}
+catch(Exception ex)
+{
+    Console.WriteLine("Ошибка но фиг знает какая! " + ex.Message);
 }

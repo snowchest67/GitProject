@@ -12,11 +12,11 @@ namespace GitProject
     }
     internal class ResearchTeam
     {
-        private string researchTopics;
-        private string nameOrganizationr;
-        private int id;
-        private TimeFrame duration;
-        private Paper[]? papers;
+        private string researchTopics;//Названием темы исследования
+        private string nameOrganizationr;//Названием организации
+        private int id;//Регистрационный номер
+        private TimeFrame duration;//Продолжительность исследования
+        private Paper[]? papers;//Список публикаций
 
         public ResearchTeam(string researchTopics, string nameOrganizationr, int id, TimeFrame duration)
         {
@@ -32,11 +32,7 @@ namespace GitProject
             this.nameOrganizationr = "nameOrganizationr";
             this.id = 0;
             this.duration = TimeFrame.Year;
-            papers = new Paper[3];
-            for (int i = 0; i < 3; i++)
-            {
-                papers[i] = new Paper();
-            }
+          
         }
 
         public string ResearchTopics
