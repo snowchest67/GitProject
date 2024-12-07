@@ -10,7 +10,7 @@ namespace GitProject
     {
         Year, TwoYears, Long
     }
-    internal class ResearchTeam
+    internal class ResearchTeam : Team
     {
         private string researchTopics;//Названием темы исследования
         private string nameOrganizationr;//Названием организации
