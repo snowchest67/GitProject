@@ -11,7 +11,7 @@ namespace GitProject
         protected string name;
         protected int id;
 
-        public Team() { }
+        public Team() { Name = "None"; ID = 1; }
         public Team(string name, int id)
         {
             Name = name;
@@ -35,5 +35,12 @@ namespace GitProject
         }
 
         public virtual object DeepCopy() { return new Team(Name, ID); }
+
+        public override string ToString()
+        {
+            return $"Название организации: {Name}, регистрационый номер: {ID}";
+        }
+
+
     }
 }

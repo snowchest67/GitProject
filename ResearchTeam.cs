@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,15 +11,14 @@ namespace GitProject
     {
         Year, TwoYears, Long
     }
-    internal class ResearchTeam : Team
+    internal class ResearchTeam : Team, INameAndCopy, IE
     {
         private string researchTopics;//Названием темы исследования
         private string nameOrganizationr;//Названием организации
-        private int id;//Регистрационный номер
         private TimeFrame duration;//Продолжительность исследования
-        private Paper[]? papers;//Список публикаций
+        private System.Collections.ArrayList papers;//Список публикаций
 
-        public ResearchTeam(string researchTopics, string nameOrganizationr, int id, TimeFrame duration)
+        public ResearchTeam(string name, int id, string researchTopics, string nameOrganizationr, TimeFrame duration) : base(name,id)
         {
             this.researchTopics = researchTopics;
             this.nameOrganizationr = nameOrganizationr;
@@ -26,11 +26,10 @@ namespace GitProject
             this.duration = duration;
         }
 
-        public ResearchTeam()
+        public ResearchTeam() : base() 
         {
             this.researchTopics = "researchTopics";
             this.nameOrganizationr = "nameOrganizationr";
-            this.id = 0;
             this.duration = TimeFrame.Year;
           
         }
@@ -64,31 +63,31 @@ namespace GitProject
             get { return (this.duration == key); }
         }
 
-        public Paper[] Papers
+        public System.Collections.ArrayList Papers
         {
             get { return papers; }
             set { papers = value; }
         }
 
-        public Paper LatePaper
+        public Paper? LatePaper
         {
             get
             {
-                int index = 0;
-                DateTime max = papers[0].DateOfPaper;
-                if (papers == null) throw new ArgumentNullException("Ссылка равна null");
-                else
+                if (papers == null) return null;
+                Paper? index = null;
+                IEnumerator x = papers.GetEnumerator();
+                Paper item = (Paper)x.Current;
+                DateTime max = item.DateOfPaper;
+                while (x.MoveNext())
                 {
-                    for(int i = 0; i < papers.Length; i++)
+                    item = (Paper)x.Current;
+                    if (max < item.DateOfPaper)
                     {
-                        if(max < papers[i].DateOfPaper)
-                        {
-                            index = i;
-                            max = papers[i].DateOfPaper;
-                        }
+                        index = item;
+                        max = item.DateOfPaper;
                     }
                 }
-                return papers[index];
+                return index;
             }
         }
 
@@ -96,43 +95,47 @@ namespace GitProject
         {
             string str = "";
             if (papers == null) return "Публкации отсутствуют.";
-            for (int i = 0; i < this.papers.Length; i++)
+            IEnumerator x = papers.GetEnumerator();
+            while (x.MoveNext())
             {
-                str += this.papers[i].ToString() + '\n';
+                Paper item = (Paper)x.Current;
+                str += item.ToString() + '\n';
             }
             return str;
         }
 
         public void AddPapers(params Paper[] mas)
         {
-            if (papers == null)
-            {
-                papers = new Paper[mas.Length];
-                for(int i = 0;i < papers.Length;i++)
-                {
-                    papers[i] = mas[i];
-                }
-            }
-            else
-            {
-                int j = papers.Length;
-                Array.Resize(ref papers, papers.Length + mas.Length);
-                for(int i = 0; j < papers.Length; i++, j++)
-                {
-                    papers[j] = mas[i];
-                }
-                
-            }
+            papers.Add(mas);
         }
 
         public override string ToString()
         {
-            return $"\nНазванием темы исследования: {researchTopics}\nНазванием организации: {nameOrganizationr}\nРегистрационный номер: {id}\nПродолжительность исследования: {duration}\nCписок публикаций:\n" + CreateStr();
+            return base.ToString() + $", названием темы исследования: {researchTopics}\nНазванием организации: {nameOrganizationr}\nРегистрационный номер: {id}\nПродолжительность исследования: {duration}\nCписок публикаций:\n" + CreateStr();
         }
 
         public virtual string ToShortString()
         {
-            return $"\nНазванием темы исследования: {researchTopics}\nНазванием организации: {nameOrganizationr}\nРегистрационный номер: {id}\nПродолжительность исследования: {duration}";
+            return base.ToString() + $"Названием темы исследования: {researchTopics}\nНазванием организации: {nameOrganizationr}\nРегистрационный номер: {id}\nПродолжительность исследования: {duration}";
         }
+
+        public override object DeepCopy()
+        {
+            return new ResearchTeam(Name,Id, ResearchTopics, NameOrganizationr, Duration);
+        }
+
+        public Team Team
+        {
+            get { return new Team(Name, Id); }
+            set
+            {
+                if (value == null) throw new ArgumentNullException("value");
+                Name = value.Name;
+                Id = value.ID;
+            }
+        }
+
+
+
     }
 }
