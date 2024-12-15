@@ -22,7 +22,7 @@ namespace GitProject
         {
             get { return id; }
             set {
-                if (id <= 0) throw new Exception("регистрационный номер");
+                if (value <= 0) throw new Exception("регистрационный номер");
                 id = value; 
             }
 
