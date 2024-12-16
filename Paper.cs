@@ -48,7 +48,10 @@ namespace GitProject
             }
             return masPaper;
         }
-
+        public virtual object DeepCopy()
+        {
+            return new Paper { TitleOfPaper = this.TitleOfPaper, Author = (Person)this.Author.DeepCopy(), DateOfPaper = this.DateOfPaper };
+        }
         public override string ToString() // метод ToString()
         {
             return $"\nНазвание публикации: {TitleOfPaper}\nАвтор: {Author.ToShortString()}\nДата публикации: {DateOfPaper.ToShortDateString()}";
