@@ -19,7 +19,7 @@ namespace GitProject
         private string researchTopics; // Поле для хранения названия темы исследования
         private string nameOrganizationr; // Поле для хранения названия организации
         private TimeFrame duration; // Поле для хранения продолжительности исследования
-        private System.Collections.ArrayList papers; // Поле для хранения обобщенного списка публикаций
+        private System.Collections.ArrayList papers; // Поле для хранения списка публикаций
         private List<Person> members; // Поле для хранения списка участников
 
         public ResearchTeam(string name, int id, string researchTopics, string nameOrganizationr, TimeFrame duration) : base(name, id) // Конструктор с параметрами
@@ -165,6 +165,18 @@ namespace GitProject
                 if (!hasPublications) // Проверка, если участник не имеет публикаций
                 {
                     yield return member; // Возвращает участника
+                }
+            }
+        }
+
+        public IEnumerable<Paper> GetRecentPublications(int n) // Метод для получения последних публикаций за n лет
+        {
+            DateTime currentDate = DateTime.Now; // Текущая дата
+            foreach (Paper paper in papers) // Перебор всех публикаций
+            {
+                if ((currentDate - paper.DateOfPaper).TotalDays <= n * 365) // Проверка, если публикация была сделана за последние n лет
+                {
+                    yield return paper; // Возвращает публикацию
                 }
             }
         }
