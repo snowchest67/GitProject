@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -73,7 +74,34 @@ namespace GitProject
             LastName = lastName;
             Birthday = birthday;
         }
+   
+        public override bool Equals(object? obj)//переопределенный метод virtial bool Equals (object obj)
+        {
 
+            if (obj == null || !(obj is Person))
+                return false;
+            else
+                return FirstName == (obj as Person).FirstName && Birthday == (obj as Person).Birthday && LastName == (obj as Person).LastName;
+        }
+        public static bool operator ==(Person p1, Person p2)//переопределить оператор == 
+        {
+            if ((object)p1 == null) return (object)p2 == null;
+            return p1.Equals(p2);
+        }
+
+        public static bool operator !=(Person p1, Person p2)//переопределить оператор != 
+        {
+            if ((object)p1 == null) return false;
+            return !p1.Equals(p2);
+        }
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+        public virtual object DeepCopy() 
+        { 
+            return new Person { FirstName = this.FirstName, LastName = this.LastName, Birthday = this.Birthday }; 
+        }
         public override string ToString() => $"\nИмя: {firstName}; Фамилия: {LastName}; год рождения: {birthday.ToShortDateString()}";
 
         public virtual string ToShortString() => $"Имя: {firstName}; Фамилия: {LastName}";
