@@ -134,6 +134,7 @@ namespace GitProject
         {
             ResearchTeam a = new ResearchTeam(Name, Id, ResearchTopics, NameOrganizationr, Duration); // Возвращает новый объект ResearchTeam
             a.Members = Members;
+            a.Papers = Papers;
             return a;
         }
 
