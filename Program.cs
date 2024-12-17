@@ -153,6 +153,12 @@ try
     //duration = endTime - startTime;
     //Console.WriteLine("Время выполнения для двумерного ступенчатого массива: " + duration.TotalMilliseconds + " мс");
 
+
+    foreach (Person person in r1) { Console.WriteLine(person); }
+    foreach (Paper person in r1.GetRecentPublications())
+    {
+        Console.WriteLine(person);
+    }
 }
 catch (ArgumentNullException ex)
 {

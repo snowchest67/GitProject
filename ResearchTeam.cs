@@ -224,5 +224,10 @@ namespace GitProject
             }
         }
 
+        public IEnumerator GetEnumerator()
+        {
+            return new ResearchTeamEnumerator(members, papers);
+        }
+
     }
 }
