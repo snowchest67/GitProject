@@ -85,10 +85,11 @@ namespace GitProject
             get
             {
                 if (papers == null) return null; // Возвращает null, если список публикаций пуст
-                Paper? index = null; // Переменная для хранения последней публикации
                 IEnumerator x = papers.GetEnumerator(); // Получение перечислителя для списка публикаций
+                x.MoveNext();
                 Paper item = (Paper)x.Current; // Получение текущего элемента списка публикаций
                 DateTime max = item.DateOfPaper; // Переменная для хранения даты последней публикации
+                Paper? index = item; // Переменная для хранения последней публикации
                 while (x.MoveNext()) // Цикл для перебора всех публикаций
                 {
                     item = (Paper)x.Current; // Получение текущего элемента списка публикаций
@@ -101,7 +102,6 @@ namespace GitProject
                 return index; // Возвращает последнюю публикацию
             }
         }
-
         private string CreateStr() // Метод для создания строки с информацией о публикациях
         {
             string str = ""; // Переменная для хранения строки
@@ -117,7 +117,10 @@ namespace GitProject
 
         public void AddPapers(params Paper[] mas) // Метод для добавления публикаций
         {
-            papers.Add(mas); // Добавление публикаций в список
+            foreach (Paper p in mas)
+            {
+                papers.Add(p);
+            } // Добавление публикаций в список
         }
 
         public override string ToString() // Переопределение метода ToString для вывода информации о команде

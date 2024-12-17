@@ -40,7 +40,6 @@ namespace GitProject
             if ((object)p1 == null) return (object)p2 == null;
             return p1.Equals(p2);
         }
-
         public static bool operator !=(Team p1, Team p2)//переопределить оператор != 
         {
             if ((object)p1 == null) return false;
