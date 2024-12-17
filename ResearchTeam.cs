@@ -122,7 +122,7 @@ namespace GitProject
             }
         }
 
-        public void AddMembers(params Person[] mas) // Метод для добавления публикаций
+        public void AddMembers(params Person[] mas) // Метод для добавления людей
         {
             if (members == null) throw new Exception("Ошибка, members был null");
             foreach (Person p in mas)

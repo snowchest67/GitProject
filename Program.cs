@@ -1,4 +1,5 @@
 ﻿using GitProject;
+using System;
 
 try
 {
@@ -72,7 +73,7 @@ try
     {
         Console.WriteLine(paper);
     }
-    Console.WriteLine("ХОТЯ БЫ ОДНА ПУБЛИКация");
+    Console.WriteLine("ХОТЯ БЫ ОДНА ПУБЛИКАЦИЯ");
     foreach (Person person in r1.GetMembersWithMultiplePublications())
     {
         Console.WriteLine(person);
@@ -164,11 +165,7 @@ try
     //duration = endTime - startTime;
     //Console.WriteLine("Время выполнения для двумерного ступенчатого массива: " + duration.TotalMilliseconds + " мс");
 
-    foreach (Paper person in r1.GetRecentPublications())
-    {
-        Console.WriteLine(person);
-    }
-
+    Console.WriteLine("\nТЕСТ ENumerable\n");
     Person person10 = new Person { FirstName = "Иван", LastName = "Иванов", Birthday = new DateTime(1985, 5, 20) };
     Person person20 = new Person { FirstName = "Петр", LastName = "Петров", Birthday = new DateTime(1990, 8, 15) };
     Person person30 = new Person { FirstName = "Сергей", LastName = "Сергеев", Birthday = new DateTime(1988, 12, 10) };
