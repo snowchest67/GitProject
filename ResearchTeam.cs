@@ -20,7 +20,7 @@ namespace GitProject
         private string nameOrganizationr; // Поле для хранения названия организации
         private TimeFrame duration; // Поле для хранения продолжительности исследования
         private System.Collections.ArrayList papers; // Поле для хранения списка публикаций
-        private List<Person> members; // Поле для хранения списка участников
+        private System.Collections.ArrayList members; // Поле для хранения списка участников
 
         public ResearchTeam(string name, int id, string researchTopics, string nameOrganizationr, TimeFrame duration) : base(name, id) // Конструктор с параметрами
         {
@@ -28,7 +28,6 @@ namespace GitProject
             this.nameOrganizationr = nameOrganizationr; // Инициализация поля nameOrganizationr
             this.id = id; // Инициализация поля id
             this.duration = duration; // Инициализация поля duration
-            this.members = new List<Person>(); // Инициализация списка участников
         }
 
         public ResearchTeam() : base() // Конструктор без параметров
@@ -36,7 +35,6 @@ namespace GitProject
             this.researchTopics = "researchTopics"; // Инициализация поля researchTopics значением по умолчанию
             this.nameOrganizationr = "nameOrganizationr"; // Инициализация поля nameOrganizationr значением по умолчанию
             this.duration = TimeFrame.Year; // Инициализация поля duration значением по умолчанию
-            this.members = new List<Person>(); // Инициализация списка участников
         }
 
         public string ResearchTopics // Свойство для доступа к полю researchTopics
@@ -74,7 +72,7 @@ namespace GitProject
             set { papers = value; } // Сеттер для установки значения поля papers
         }
 
-        public List<Person> Members // Свойство для доступа к полю members
+        public System.Collections.ArrayList Members // Свойство для доступа к полю members
         {
             get { return members; } // Геттер для получения значения поля members
             set { members = value; } // Сеттер для установки значения поля members
@@ -120,6 +118,14 @@ namespace GitProject
             foreach (Paper p in mas)
             {
                 papers.Add(p);
+            } // Добавление публикаций в список
+        }
+
+        public void AddMembers(params Person[] mas) // Метод для добавления публикаций
+        {
+            foreach (Person p in mas)
+            {
+                members.Add(p);
             } // Добавление публикаций в список
         }
 
