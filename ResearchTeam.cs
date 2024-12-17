@@ -14,7 +14,7 @@ namespace GitProject
         Long // Значение Long
     }
 
-    internal class ResearchTeam : Team, INameAndCopy // Объявление класса ResearchTeam, наследующего от Team и реализующего интерфейс INameAndCopy
+    internal class ResearchTeam : Team, INameAndCopy, IEnumerable // Объявление класса ResearchTeam, наследующего от Team и реализующего интерфейс INameAndCopy
     {
         private string researchTopics; // Поле для хранения названия темы исследования
         private string nameOrganizationr; // Поле для хранения названия организации
@@ -228,6 +228,13 @@ namespace GitProject
         {
             return new ResearchTeamEnumerator(members, papers);
         }
+
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+
 
     }
 }

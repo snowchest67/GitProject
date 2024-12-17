@@ -8,15 +8,15 @@ try
 
     ResearchTeam r1 = new ResearchTeam("Тема исследования", 1, "Организация", "Название организации", TimeFrame.Year);//Создать объект типа ResearchTeam
     //добавить элементы в список участников проекта
-    r1.Members = new System.Collections.ArrayList {person1, person2};
+    r1.Members = new System.Collections.ArrayList { person1, person2 };
     r1.AddMembers(person3);
- 
+
     Paper p1 = new Paper("Сватко о пандосах!", new Person("Тимофей", "Логвин", new DateTime(2006, 04, 03)), new DateTime(2021, 11, 20));
     Paper p2 = new Paper("Как выжить на IT", new Person("Злата", "Гросул", new DateTime(2006, 11, 24)), new DateTime(2023, 11, 15));
     Paper p3 = new Paper("Куда идти на практику?", new Person("Анна", "Архипцева", new DateTime(2007, 02, 17)), new DateTime(2024, 11, 18));
 
     //добавить элементы в список публикаций
-    r1.Papers = new System.Collections.ArrayList { p1, p2};
+    r1.Papers = new System.Collections.ArrayList { p1, p2 };
     r1.AddPapers(p3);
     Console.WriteLine("Добавили список публикаций:");
     foreach (Paper paper in r1.Papers)
@@ -87,14 +87,6 @@ try
     // Выводим значения хэш-кодов
     Console.WriteLine($"Хэш-код t1: {t1.GetHashCode()}");
     Console.WriteLine($"Хэш-код t2: {t2.GetHashCode()}");
-    try
-    {
-        r1.ID = -1;
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Ошибка: {ex.Message}");
-    }
 
     //Console.WriteLine("Введите размер массивов: ");
     //int n1 = Convert.ToInt32(Console.ReadLine());
@@ -162,7 +154,10 @@ try
     //Console.WriteLine("Время выполнения для двумерного ступенчатого массива: " + duration.TotalMilliseconds + " мс");
 
 
-    foreach (Person person in r1) { Console.WriteLine(person); }
+    foreach (Person person in r1)
+    {
+        Console.WriteLine($"{person.FirstName} {person.LastName} имеет публикации.");
+    }
     foreach (Paper person in r1.GetRecentPublications())
     {
         Console.WriteLine(person);

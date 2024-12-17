@@ -23,8 +23,7 @@ namespace GitProject
         {
             while (++position < members.Count)
             {
-                Person member = (Person)members[position];
-                if (papers.Cast<Paper>().Any(p => p.Author == member))
+                if (HasPublications((Person)members[position]))
                 {
                     return true;
                 }
@@ -48,5 +47,20 @@ namespace GitProject
                 return members[position];
             }
         }
+
+        private bool HasPublications(Person person)
+        {
+            foreach (Paper paper in papers)
+            {
+                if (paper.Author == person)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+
+
     }
 }
