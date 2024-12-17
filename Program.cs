@@ -68,6 +68,10 @@ try
     {
         Console.WriteLine(paper);
     }
+    foreach (Person person in r1.GetMembersWithMultiplePublications())
+    {
+        Console.WriteLine(person);
+    }
     Console.WriteLine("СРАВНЕНИЕ TEAM\n");
 
     Team t1 = new Team("Команда1", 12);

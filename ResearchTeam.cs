@@ -158,7 +158,30 @@ namespace GitProject
                 Id = value.ID; // Устанавливает значение Id
             }
         }
+        public IEnumerable<Person> GetMembersWithMultiplePublications()
+        {
+            var publicationCount = new Dictionary<Person, int>();
 
+            foreach (Paper paper in papers)
+            {
+                if (publicationCount.ContainsKey(paper.Author))
+                {
+                    publicationCount[paper.Author]++;
+                }
+                else
+                {
+                    publicationCount[paper.Author] = 1;
+                }
+            }
+
+            foreach (var entry in publicationCount)
+            {
+                if (entry.Value > 1)
+                {
+                    yield return entry.Key;
+                }
+            }
+        }
         public IEnumerable<Person> GetMembersWithoutPublications() // Метод для получения участников без публикаций
         {
             foreach (Person member in members) // Перебор всех участников
