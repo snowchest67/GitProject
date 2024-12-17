@@ -9,11 +9,11 @@ namespace GitProject
 {
     internal class ResearchTeamEnumerator : IEnumerator
     {
-        private readonly ArrayList members;
-        private readonly ArrayList papers;
+        private readonly System.Collections.ArrayList members;
+        private readonly System.Collections.ArrayList papers;
         private int position = -1;
 
-        public ResearchTeamEnumerator(ArrayList members, ArrayList papers)
+        public ResearchTeamEnumerator(System.Collections.ArrayList members, System.Collections.ArrayList papers)
         {
             this.members = members;
             this.papers = papers;

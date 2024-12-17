@@ -153,15 +153,31 @@ try
     //duration = endTime - startTime;
     //Console.WriteLine("Время выполнения для двумерного ступенчатого массива: " + duration.TotalMilliseconds + " мс");
 
-
-    foreach (Person person in r1)
-    {
-        Console.WriteLine($"{person.FirstName} {person.LastName} имеет публикации.");
-    }
     foreach (Paper person in r1.GetRecentPublications())
     {
         Console.WriteLine(person);
     }
+
+    Person person10 = new Person { FirstName = "Иван", LastName = "Иванов", Birthday = new DateTime(1985, 5, 20) };
+    Person person20 = new Person { FirstName = "Петр", LastName = "Петров", Birthday = new DateTime(1990, 8, 15) };
+    Person person30 = new Person { FirstName = "Сергей", LastName = "Сергеев", Birthday = new DateTime(1988, 12, 10) };
+
+    // Создаем публикации
+    Paper paper10 = new Paper("Исследование 1", person10, new DateTime(2020, 1, 10));
+    Paper paper20 = new Paper("Исследование 2", person20, new DateTime(2021, 3, 5));
+    Paper paper30 = new Paper("Исследование 3", person10, new DateTime(2022, 7, 20));
+
+    // Создаем исследовательскую команду и добавляем участников и публикации
+    ResearchTeam researchTeam = new ResearchTeam();
+    researchTeam.Members = new System.Collections.ArrayList { person10, person20, person30 };
+    researchTeam.Papers = new System.Collections.ArrayList { paper10, paper20, paper30 };
+
+    // Перебираем участников, у которых есть публикации
+    foreach (Person person in researchTeam)
+    {
+        Console.WriteLine($"{person.FirstName} {person.LastName} имеет публикации.");
+    }
+
 }
 catch (ArgumentNullException ex)
 {
@@ -175,4 +191,6 @@ catch (Exception ex)
 {
     Console.WriteLine("Ошибка но фиг знает какая! " + ex.Message);
 }
+
+
 
