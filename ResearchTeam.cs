@@ -115,20 +115,21 @@ namespace GitProject
 
         public void AddPapers(params Paper[] mas) // Метод для добавления публикаций
         {
+            if (papers == null) throw new Exception("Ошибка, papers был null");
             foreach (Paper p in mas)
             {
-                papers.Add(p);
-            } // Добавление публикаций в список
+                papers.Add(p);// Добавление публикаций в список
+            }
         }
 
         public void AddMembers(params Person[] mas) // Метод для добавления публикаций
         {
+            if (members == null) throw new Exception("Ошибка, members был null");
             foreach (Person p in mas)
             {
-                members.Add(p);
-            } // Добавление публикаций в список
+                members.Add(p);// Добавление людей в список
+            }
         }
-
         public override string ToString() // Переопределение метода ToString для вывода информации о команде
         {
             return base.ToString() + $", названием темы исследования: {researchTopics}\nНазванием организации: {nameOrganizationr}\nРегистрационный номер: {id}\nПродолжительность исследования: {duration}\nCписок публикаций:\n" + CreateStr(); // Возвращает строку с информацией о команде
