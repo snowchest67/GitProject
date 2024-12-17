@@ -177,7 +177,17 @@ namespace GitProject
                 }
             }
         }
-
+        public IEnumerable<Paper> GetRecentPublications()
+        {
+            DateTime oneYearAgo = DateTime.Now.AddYears(-1);
+            foreach (Paper paper in papers)
+            {
+                if (paper.DateOfPaper >= oneYearAgo)
+                {
+                    yield return paper;
+                }
+            }
+        }
         public IEnumerable<Paper> GetRecentPublications(int n) // Метод для получения последних публикаций за n лет
         {
             DateTime currentDate = DateTime.Now; // Текущая дата

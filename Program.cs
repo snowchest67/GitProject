@@ -64,7 +64,10 @@ try
     {
         Console.WriteLine(paper);
     }
-
+    foreach (Paper paper in r1.GetRecentPublications())
+    {
+        Console.WriteLine(paper);
+    }
     Console.WriteLine("СРАВНЕНИЕ TEAM\n");
 
     Team t1 = new Team("Команда1", 12);
