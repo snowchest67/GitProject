@@ -88,6 +88,14 @@ try
     Console.WriteLine($"Хэш-код t1: {t1.GetHashCode()}");
     Console.WriteLine($"Хэш-код t2: {t2.GetHashCode()}");
 
+    try
+    {
+        r1.ID = -1;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Ошибка: {ex.Message}");
+    }
     //Console.WriteLine("Введите размер массивов: ");
     //int n1 = Convert.ToInt32(Console.ReadLine());
 
