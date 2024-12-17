@@ -8,7 +8,7 @@ try
 
     ResearchTeam r1 = new ResearchTeam("Тема исследования", 1, "Организация", "Название организации", TimeFrame.Year);//Создать объект типа ResearchTeam
     //добавить элементы в список участников проекта
-    r1.Papers = new System.Collections.ArrayList {person1, person2};
+    r1.Members = new System.Collections.ArrayList {person1, person2};
     r1.AddMembers(person3);
  
     Paper p1 = new Paper("Сватко о пандосах!", new Person("Тимофей", "Логвин", new DateTime(2006, 04, 03)), new DateTime(2021, 11, 20));
