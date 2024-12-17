@@ -4,7 +4,7 @@ try
 {
     Person person1 = new Person("Иван", "Иванов", new DateTime(1985, 5, 20));
     Person person2 = new Person("Петр", "Петров", new DateTime(1990, 8, 15));
-    Person person3 = new Person("Сергей", "Сергеев", new DateTime(1988, 12, 10));
+    Person person3 = new Person("Полина", "Белевич", new DateTime(2007, 02, 17));
 
     ResearchTeam r1 = new ResearchTeam("Тема исследования", 1, "Организация", "Название организации", TimeFrame.Year);//Создать объект типа ResearchTeam
     //добавить элементы в список участников проекта
@@ -13,11 +13,12 @@ try
 
     Paper p1 = new Paper("Сватко о пандосах!", new Person("Тимофей", "Логвин", new DateTime(2006, 04, 03)), new DateTime(2021, 11, 20));
     Paper p2 = new Paper("Как выжить на IT", new Person("Злата", "Гросул", new DateTime(2006, 11, 24)), new DateTime(2023, 11, 15));
-    Paper p3 = new Paper("Куда идти на практику?", new Person("Анна", "Архипцева", new DateTime(2007, 02, 17)), new DateTime(2024, 11, 18));
+    Paper p3 = new Paper("Куда идти на практику?", new Person("Полина", "Белевич", new DateTime(2007, 02, 17)), new DateTime(2024, 11, 18));
+    Paper p4 = new Paper("Куда идти на практику?2.0", new Person("Полина", "Белевич", new DateTime(2007, 02, 17)), new DateTime(2024, 11, 18));
 
     //добавить элементы в список публикаций
     r1.Papers = new System.Collections.ArrayList { p1, p2 };
-    r1.AddPapers(p3);
+    r1.AddPapers(p3,p4);
     Console.WriteLine("Добавили список публикаций:");
     foreach (Paper paper in r1.Papers)
     {
@@ -66,15 +67,17 @@ try
     {
         Console.WriteLine(paper);
     }
+    Console.WriteLine("В ЭТОМ ГОДУ");
     foreach (Paper paper in r1.GetRecentPublications())
     {
         Console.WriteLine(paper);
     }
+    Console.WriteLine("ХОТЯ БЫ ОДНА ПУБЛИКация");
     foreach (Person person in r1.GetMembersWithMultiplePublications())
     {
         Console.WriteLine(person);
     }
-    Console.WriteLine("СРАВНЕНИЕ TEAM\n");
+    Console.WriteLine("\nСРАВНЕНИЕ TEAM\n");
 
     Team t1 = new Team("Команда1", 12);
     Team t2 = new Team("Команда1", 12); // Создаем объект с теми же данными
@@ -181,6 +184,7 @@ try
     researchTeam.Papers = new System.Collections.ArrayList { paper10, paper20, paper30 };
 
     // Перебираем участников, у которых есть публикации
+    Console.WriteLine("Перебираем участников, у которых есть публикации\n");
     foreach (Person person in researchTeam)
     {
         Console.WriteLine($"{person.FirstName} {person.LastName} имеет публикации.");

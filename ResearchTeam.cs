@@ -160,28 +160,29 @@ namespace GitProject
         }
         public IEnumerable<Person> GetMembersWithMultiplePublications()
         {
-            var publicationCount = new Dictionary<Person, int>();
-
-            foreach (Paper paper in papers)
+            // Перебираем каждого участника в списке Members
+            foreach (Person member in Members)
             {
-                if (publicationCount.ContainsKey(paper.Author))
-                {
-                    publicationCount[paper.Author]++;
-                }
-                else
-                {
-                    publicationCount[paper.Author] = 1;
-                }
-            }
+                int publicationCount = 0; // Инициализируем счетчик количества публикаций
 
-            foreach (var entry in publicationCount)
-            {
-                if (entry.Value > 1)
+                // Перебираем каждую публикацию в списке Papers
+                foreach (Paper paper in Papers)
                 {
-                    yield return entry.Key;
+                    // Проверяем, является ли текущий участник автором публикации
+                    if (paper.Author == member)
+                    {
+                        publicationCount++; // Увеличиваем счетчик, если участник является автором
+                    }
+                }
+
+                // Проверяем, если у участника больше одной публикации
+                if (publicationCount > 1)
+                {
+                    yield return member; // Возвращаем участника, если у него несколько публикаций
                 }
             }
         }
+
         public IEnumerable<Person> GetMembersWithoutPublications() // Метод для получения участников без публикаций
         {
             foreach (Person member in members) // Перебор всех участников
